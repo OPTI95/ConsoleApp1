@@ -1,5 +1,5 @@
 ﻿using System;
-
+namespace ConsoleApp1;
 class Program
 {
     static void Main(string[] args)
@@ -27,5 +27,50 @@ class Program
             number /= 10;
         }
         return sum;
+    }
+}
+
+
+public static class MathFunctions
+{
+    public static int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public static int Factorial(int n)
+    {
+        if (n == 0)
+            return 1;
+        return n * Factorial(n - 1);
+    }
+
+    public static bool IsPrime(int number)
+    {
+        if (number <= 1)
+            return false;
+
+        for (int i = 2; i <= Math.Sqrt(number); i++)
+        {
+            if (number % i == 0)
+                return false;
+        }
+        return true;
+    }
+}
+
+public static class StringFunctions
+{
+    public static string ReverseString(string input)
+    {
+        char[] charArray = input.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
+
+    public static bool IsPalindrome(string input)
+    {
+        string reversed = ReverseString(input);
+        return input.Equals(reversed, StringComparison.OrdinalIgnoreCase);
     }
 }
